@@ -1,0 +1,20 @@
+What is the model Animals responsible for?
+What is the view SelectView responsible for?
+
+App.js creates an instance of the Animals model on loading and calls its bindEvents() method. This causes the Animals object to publish the 'Animals:all-animals-ready' channel and provide the array of animal objects.
+
+The SelectView view subscribes to the 'Animals:all-animals-ready' channel and uses the provided array to populate the drop down. It then publishes the 'SelectView:change' channel along with the selected index.
+
+The Animals model subcribes to this change and publishes the associated data with the 'Animals:selected-animal-ready' channel.
+
+What does the SelectView's populate method do?
+
+The populate() method takes the array of animal data received from the Animals model as an argument. It loops through the array creating an option within the option dropdown for each element of the array.
+
+What is the view AnimalInfoView responsible for?
+
+The AnimalInfoView subscribes to the 'Animals:selected-animal-ready' channel and renders the accompanying data in the browser.
+
+What is app.js responsible for?
+
+App.js creates objects of each of the classes which then listen for the relevant events.
